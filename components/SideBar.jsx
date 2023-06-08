@@ -32,7 +32,7 @@ function SideBar() {
               <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">1</li>
               <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">2</li>
               <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">3</li>
-              <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">4x</li>
+              <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">4</li>
             </ul>
           </nav>
         </div>
