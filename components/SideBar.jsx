@@ -3,7 +3,7 @@ import React from 'react'
 function SideBar() {
   return (
     <div className="">
-      <div className="relative">
+      <div className=" hidden md:flex relative">
         <img src="/images/bg-sidebar-desktop.svg"
           className="hidden md:flex"
           alt="desktop side bar"
@@ -28,7 +28,7 @@ function SideBar() {
         />
         <div className=" absolute mobile">
           <nav className="">
-            <ul className="flex gap-20">
+            <ul className="flex gap-10">
               <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">1</li>
               <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">2</li>
               <li className=" border-2 rounded-full w-7 h-7 flex justify-center items-center hover:bg-blue-300 font-bold">3</li>

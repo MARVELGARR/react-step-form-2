@@ -1,9 +1,9 @@
 import React from 'react'
 
-function form3() {
+function Form3() {
   return (
     <div>form3</div>
   )
 }
 
-export default form3
+export default Form3

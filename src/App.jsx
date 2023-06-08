@@ -13,7 +13,7 @@ function App() {
         <div className="">
           <SideBar/>
         </div>
-        <div className="">
+        <div className="bg-teal-600/30 h-96">
           <Hero/>
         </div>
       </div>
