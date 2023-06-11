@@ -3,7 +3,7 @@ import React from 'react'
 function Form1() {
   return (
     <form className="">
-      <h1 className="">Personal info</h1>
+      <h1 className=" text-md">Personal info</h1>
       <p className="">Please provide your name, email address, and phone number.</p>
       <div>
         <div>
