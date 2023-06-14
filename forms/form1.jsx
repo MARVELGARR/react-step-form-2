@@ -1,16 +1,17 @@
 import React from 'react'
+import "../src/index.css"
 
 function Form1() {
   return (
-    <form className=" flex flex-col gap-5">
-      <div className="">
+    <form className="w-full  flex flex-col">
+      <div className=" ">
         <h1 className="">Personal info</h1>
-        <p className="">Please provide your name, email address, and phone number.</p>
+        <p className=" ">Please provide your name, email address, and phone number.</p>
       </div>
-      
+
       <div className="">
         <fieldset>
-          <label className="">Name</label>
+          <label className="" htmlFor='name'>Name</label>
           <input type="text" id='name' className="" />
           <div className=''></div>
         </fieldset>
