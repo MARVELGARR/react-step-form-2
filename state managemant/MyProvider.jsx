@@ -10,7 +10,9 @@ function MyProvider({children}) {
     const [nameError, setNameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [phoneError, setPhoneError] = useState("");
-    
+    const [periodicy, setPeriodicy] = useState(true);
+
+
     let hasError = false;
 
     const handleNext = () =>{
@@ -20,6 +22,14 @@ function MyProvider({children}) {
             console.log(next)
         }
     }
+    const handleBack = () =>{
+        setNext((prev)=> prev - 1);
+    }
+
+    const handPeriodChange = ()=>{
+        setPeriodicy((prev)=> !prev)
+    }
+
     const handleNameError = (message) => {
         setNameError(message)
     }
@@ -89,6 +99,10 @@ function MyProvider({children}) {
         setName,
         setEmail,
         setPhone,
+        handleBack,
+        periodicy,
+        setPeriodicy,
+        handPeriodChange
     }
 
   return (
