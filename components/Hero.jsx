@@ -9,9 +9,6 @@ import { MyContext } from '../state managemant/MyContex'
 function Hero() {
 
   const {next, } = useContext(MyContext)
-  useEffect(()=>{
-    console.log(next)
-  },[])
 
   return (
     <div className="absolute form bg-white shadow-xl shadow-slate-300 rounded-xl ">
