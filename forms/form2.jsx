@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import { MyContext } from '../state managemant/MyContex'
 
 function Form2() {
-  const { handleBack, handleSelectRadio, selectedPrice, selectedPlan, arcadePrice, advancePrice, proPrice, handleNext, handPeriodChange} = useContext(MyContext);
+  const { handleBack, periodicy, handleSelectRadio, selectedPrice, selectedPlan, arcadePrice, advancePrice, proPrice, handleNext, handPeriodChange} = useContext(MyContext);
   
 
   return (
@@ -20,7 +20,7 @@ function Form2() {
           <div className="">
             <strong className='text-cyan-900 bold'>Arcade</strong>
             <div className="">{arcadePrice}</div>
-            <div className="">{}</div>
+            <div className="">{ !toggleRef.current ? "2 months free" : ""}</div>
           </div>
         </fieldset>
         <fieldset className={` ${ selectedPlan == "advance" ? " border-cyan-950" : "" } flex relative border-2 gap-5 p-3 rounded-lg items-center`}>
@@ -29,7 +29,7 @@ function Form2() {
           <div className="">
             <strong className='text-cyan-900 bold'>Advanced</strong>
             <div className="">{ advancePrice }</div>
-            <div className="">{}</div>
+            <div className="">{ !toggleRef.current ? "2 months free" : ""}</div>
           </div>
         </fieldset>
         <fieldset className={` ${ selectedPlan == "pro" ? " border-cyan-950" : "" } flex relative border-2 gap-5 p-3 rounded-lg items-center`}>
@@ -38,7 +38,7 @@ function Form2() {
           <div className="">
             <strong className='text-cyan-900 bold'>Pro</strong>
             <div className="">{ proPrice }</div>
-            <div className="">{}</div>
+            <div className="">{ !toggleRef.current ? "2 months free" : ""}</div>
           </div>
         </fieldset>
       </div>

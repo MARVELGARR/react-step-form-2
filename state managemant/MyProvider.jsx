@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { MyContext } from './MyContex'
 
 
@@ -17,6 +17,14 @@ function MyProvider({children}) {
     const [selectedPlan, setSelectedPlan] = useState('');
     const [selectedPrice, setSelectedPrice] = useState('');
 
+    const [servicePrice1, setServicePrice1] = useState("+1/mo")
+    const [servicePrice2, setServicePrice2] = useState("+2/mo")
+    const [servicePrice3, setServicePrice3] = useState("+2/mo")
+
+    const [selectedService, setSelectedService] = useState( [{ }] )
+
+    const toggleRef = useRef(true);
+
     let hasError = false;
 
     const handleNext = () =>{
@@ -24,6 +32,11 @@ function MyProvider({children}) {
         if (!hasError){
             setNext((prev) => prev + 1);
         }
+    }
+
+    const handleCheckBox = (serviceName, servicePrice) =>{
+        setSelectedService([...selectedService,{ Name: serviceName, Price: servicePrice}]);
+        console.log(selectedService)
     }
 
     // //  this part of that code is used to to automatically change
@@ -47,11 +60,31 @@ function MyProvider({children}) {
         else if (selectedPrice === "$150/yr"){
             setSelectedPrice("$15/mo")
         }
+        else if( servicePrice1 === "+$1/mo"){
+            setServicePrice1("+10/yr")
+        }
+        else if( servicePrice1 === "+10/yr"){
+            setServicePrice1("+1/mo")
+        }
+        else if( servicePrice2 === "+$2/mo"){
+            setServicePrice2("+20/yr")
+        }
+        else if( servicePrice2 === "+20/yr"){
+            setServicePrice2("+2/mo")
+        }
+        else if( servicePrice3 === "+$2/mo"){
+            setServicePrice2("+$20/yr")
+        }
+        else if( servicePrice3 === "+$20/yr"){
+            setServicePrice2("+$2/mo")
+        }
         else{
-            setSelectedPrice("")
+            setServicePrice1("")
+            setServicePrice2("")
+            setServicePrice3("")
         }
 
-    }, [periodicy])
+    }, [toggleRef])
 
     const handleSelectRadio = (planName, planPrice) =>{
         setSelectedPlan(planName)
@@ -68,16 +101,23 @@ function MyProvider({children}) {
     // this part of the code is used to control the duration change of the plan
 
     const handPeriodChange = ()=>{
-        setPeriodicy((prev)=> !prev)
-        if(periodicy){
+        toggleRef.current = !toggleRef.current;
+        if (toggleRef.current) {
             setArcadePrice("$90/yr")
             setAdvancePrice("$120/yr")
             setProPrice("$150/yr")
+            setServicePrice1("+10/yr")
+            setServicePrice2("+20/yr")
+            setServicePrice3("+$20/yr")
+
         }
         else{
             setArcadePrice("$9/mo")
             setAdvancePrice("$12/mo")
             setProPrice("$15/mo")
+            setServicePrice1("+1/mo")
+            setServicePrice2("+2/mo")
+            setServicePrice3("+2/mo")
         }
     }
 
@@ -134,6 +174,9 @@ function MyProvider({children}) {
         return hasError;
     }
 
+
+
+
     const value ={
         handleNext,
         next,
@@ -158,6 +201,12 @@ function MyProvider({children}) {
         selectedPlan,
         selectedPrice,
         handleSelectRadio,
+        periodicy,
+        handleCheckBox,
+        servicePrice1,
+        servicePrice2,
+        servicePrice3,
+        toggleRef
     }
 
   return (
