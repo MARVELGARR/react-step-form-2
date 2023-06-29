@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { MyContext } from './MyContex'
-
+import { v4 as uuid } from 'uuid'; 
 
 function MyProvider({children}) {
     const [next, setNext] = useState(2)
@@ -10,7 +10,7 @@ function MyProvider({children}) {
     const [nameError, setNameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [phoneError, setPhoneError] = useState("");
-    const [periodicy, setPeriodicy] = useState(true);
+    const [periodicy, setPeriodicy] = useState(false);
     const [arcadePrice, setArcadePrice] = useState('$9/mo');
     const [advancePrice, setAdvancePrice] = useState('$12/mo');
     const [proPrice, setProPrice] = useState('$15/mo');
@@ -23,8 +23,7 @@ function MyProvider({children}) {
 
     const [selectedService, setSelectedService] = useState( [{ }] )
 
-    const toggleRef = useRef(true);
-
+    const uniqueId = uuid();
     let hasError = false;
 
     const handleNext = () =>{
@@ -35,7 +34,7 @@ function MyProvider({children}) {
     }
 
     const handleCheckBox = (serviceName, servicePrice) =>{
-        setSelectedService([...selectedService,{ Name: serviceName, Price: servicePrice}]);
+        setSelectedService([...selectedService,{ id:uuid(), Name: serviceName, Price: servicePrice}]);
         console.log(selectedService)
     }
 
@@ -78,13 +77,13 @@ function MyProvider({children}) {
         else if( servicePrice3 === "+$20/yr"){
             setServicePrice2("+$2/mo")
         }
-        else{
-            setServicePrice1("")
-            setServicePrice2("")
-            setServicePrice3("")
-        }
 
-    }, [toggleRef])
+
+    }, [periodicy])
+    useEffect(()=>{
+        
+    },[])
+
 
     const handleSelectRadio = (planName, planPrice) =>{
         setSelectedPlan(planName)
@@ -97,12 +96,13 @@ function MyProvider({children}) {
     const handleBack = () =>{
         setNext((prev)=> prev - 1);
     }
+    
 
     // this part of the code is used to control the duration change of the plan
 
     const handPeriodChange = ()=>{
-        toggleRef.current = !toggleRef.current;
-        if (toggleRef.current) {
+        setPeriodicy((prev)=> !prev)
+        if(!periodicy){
             setArcadePrice("$90/yr")
             setAdvancePrice("$120/yr")
             setProPrice("$150/yr")
@@ -206,7 +206,7 @@ function MyProvider({children}) {
         servicePrice1,
         servicePrice2,
         servicePrice3,
-        toggleRef
+        uniqueId
     }
 
   return (

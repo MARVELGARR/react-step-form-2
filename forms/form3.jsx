@@ -3,7 +3,7 @@ import { MyContext } from '../state managemant/MyContex'
 
 function Form3() {
 
-  const { handleBack, toggleRef, servicePrice1, servicePrice2, servicePrice3, handleNext, handleCheckBox} =  useContext(MyContext)
+  const { handleBack, uniqueId, servicePrice1, servicePrice2, servicePrice3, handleNext, handleCheckBox} =  useContext(MyContext)
 
 
 
@@ -15,7 +15,7 @@ function Form3() {
           <p className=" text-xl text-gray-500 pb-4">Add-ons helps enhance your gaming experience</p>
         </div>
         <div className=" flex flex-col gap-4">
-          <fieldset className=" flex px-2 py-3 border-2 rounded-lg items-center justify-between">
+          <fieldset className={` flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
             <input onClick={()=>handleCheckBox("online service", servicePrice1 )} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Online service</h3>
@@ -23,7 +23,7 @@ function Form3() {
             </div>
             <div className="text-cyan-900 text-sm font-semibold">{servicePrice1}</div>
           </fieldset>
-          <fieldset className=" flex px-2 py-3 border-2 rounded-lg items-center justify-between">
+          <fieldset className={` flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
             <input onClick={()=>handleCheckBox("Larger storage", servicePrice2 )} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Larger storage</h3>
@@ -31,7 +31,7 @@ function Form3() {
             </div>
             <div className="text-cyan-900 text-sm font-semibold">{servicePrice2}</div>
           </fieldset>
-          <fieldset className=" flex px-2 py-3 border-2 rounded-lg items-center justify-between">
+          <fieldset className={` flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
             <input  onClick={()=>handleCheckBox("Customizable profile", servicePrice3 )} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Customizable profile</h3>
