@@ -3,7 +3,7 @@ import { MyContext } from './MyContex'
 import { v4 as uuid } from 'uuid'; 
 
 function MyProvider({children}) {
-    const [next, setNext] = useState(2)
+    const [next, setNext] = useState(3)
     const [name, setName] =  useState("");
     const [email, setEmail] =  useState("");
     const [phone, setPhone] =  useState("");
@@ -11,6 +11,7 @@ function MyProvider({children}) {
     const [emailError, setEmailError] = useState("");
     const [phoneError, setPhoneError] = useState("");
     const [periodicy, setPeriodicy] = useState(false);
+    const [period, setPeriod] = useState("monthly");
     const [arcadePrice, setArcadePrice] = useState('$9/mo');
     const [advancePrice, setAdvancePrice] = useState('$12/mo');
     const [proPrice, setProPrice] = useState('$15/mo');
@@ -21,7 +22,14 @@ function MyProvider({children}) {
     const [servicePrice2, setServicePrice2] = useState("+2/mo")
     const [servicePrice3, setServicePrice3] = useState("+2/mo")
 
-    const [selectedService, setSelectedService] = useState( [{ }] )
+    const [selectedService, setSelectedService] = useState( [] )
+    let selectedFilter = []
+
+    const [checked, setChecked] = useState(true)
+    const [checked1, setChecked1] = useState(false)
+    const [checked2, setChecked2] = useState(false)
+    const [checked3, setChecked3] = useState(false)
+    
 
     const uniqueId = uuid();
     let hasError = false;
@@ -33,10 +41,20 @@ function MyProvider({children}) {
         }
     }
 
-    const handleCheckBox = (serviceName, servicePrice) =>{
-        setSelectedService([...selectedService,{ id:uuid(), Name: serviceName, Price: servicePrice}]);
-        console.log(selectedService)
-    }
+    
+
+    const handleCheckBox = (event) => {
+        const {value, checked} = event.target;
+        if(checked){
+            const [item, price] = value.split(',');
+            setSelectedService([...selectedService, {item, price}]);
+        }
+        else {
+            setSelectedService(selectedService.filter((service)=> service.item !== value.split(',')[0]));
+        }
+        console.log(selectedService);
+    };
+
 
     // //  this part of that code is used to to automatically change
     // the price of the selectedPlan when the user change the period
@@ -109,7 +127,7 @@ function MyProvider({children}) {
             setServicePrice1("+10/yr")
             setServicePrice2("+20/yr")
             setServicePrice3("+$20/yr")
-
+            setPeriod("yearly")
         }
         else{
             setArcadePrice("$9/mo")
@@ -118,6 +136,7 @@ function MyProvider({children}) {
             setServicePrice1("+1/mo")
             setServicePrice2("+2/mo")
             setServicePrice3("+2/mo")
+            setPeriod("monthly")
         }
     }
 
@@ -206,7 +225,10 @@ function MyProvider({children}) {
         servicePrice1,
         servicePrice2,
         servicePrice3,
-        uniqueId
+        checked,
+        checked1,
+        selectedService,
+        period
     }
 
   return (
