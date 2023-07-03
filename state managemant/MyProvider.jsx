@@ -3,7 +3,7 @@ import { MyContext } from './MyContex'
 import { v4 as uuid } from 'uuid'; 
 
 function MyProvider({children}) {
-    const [next, setNext] = useState(3)
+    const [next, setNext] = useState(0)
     const [name, setName] =  useState("");
     const [email, setEmail] =  useState("");
     const [phone, setPhone] =  useState("");
@@ -12,6 +12,7 @@ function MyProvider({children}) {
     const [phoneError, setPhoneError] = useState("");
     const [periodicy, setPeriodicy] = useState(false);
     const [period, setPeriod] = useState("monthly");
+    const [per, setPer] =  useState("per month");
     const [arcadePrice, setArcadePrice] = useState('$9/mo');
     const [advancePrice, setAdvancePrice] = useState('$12/mo');
     const [proPrice, setProPrice] = useState('$15/mo');
@@ -25,11 +26,6 @@ function MyProvider({children}) {
     const [selectedService, setSelectedService] = useState( [] )
     let selectedFilter = []
 
-    const [checked, setChecked] = useState(true)
-    const [checked1, setChecked1] = useState(false)
-    const [checked2, setChecked2] = useState(false)
-    const [checked3, setChecked3] = useState(false)
-    
 
     const uniqueId = uuid();
     let hasError = false;
@@ -41,6 +37,14 @@ function MyProvider({children}) {
         }
     }
 
+    const calculateTotal = () =>{
+       let PlanPrice = selectedPrice.replace("$","").replace("mo", "").replace("/", "")
+       let totalServicePrice = selectedService.price
+       console.log(totalServicePrice);
+    }
+    useEffect(() =>{
+        calculateTotal();
+    }, [selectedPrice])
     
 
     const handleCheckBox = (event) => {
@@ -128,6 +132,7 @@ function MyProvider({children}) {
             setServicePrice2("+20/yr")
             setServicePrice3("+$20/yr")
             setPeriod("yearly")
+            setPer("per year")
         }
         else{
             setArcadePrice("$9/mo")
@@ -137,6 +142,7 @@ function MyProvider({children}) {
             setServicePrice2("+2/mo")
             setServicePrice3("+2/mo")
             setPeriod("monthly")
+            setPer("per month")
         }
     }
 
@@ -225,10 +231,10 @@ function MyProvider({children}) {
         servicePrice1,
         servicePrice2,
         servicePrice3,
-        checked,
-        checked1,
         selectedService,
-        period
+        period,
+        uniqueId,
+        per
     }
 
   return (
