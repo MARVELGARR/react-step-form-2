@@ -3,7 +3,9 @@ import { MyContext } from '../state managemant/MyContex'
 import { v4 as uuid } from "uuid"
 function Form4() {
 
-  const { selectedPlan,  handleBack, per, selectedService, handleNext, period, selectedPrice} = useContext(MyContext)
+  const { selectedPlan, periodicy, totalPrice,  handleBack, per, selectedService, handleNext, period, selectedPrice} = useContext(MyContext)
+
+
 
   return (
     <div className="px-4 py-7 pb-16 flex flex-col">
@@ -23,14 +25,14 @@ function Form4() {
           <div className="">{selectedService.map((service)=>{
             return (
               <div key={service.item} className="flex mb-2 mt-3 justify-between items-center">
-                <div className="">{service.item}</div>
-                <div className="">{service.price}</div>
+                <div className=" text-gray-300 text-lg">{service.item}</div>
+                <div className=" text-gray-300 text-lg">{service.price}</div>
               </div>
             )
           })}</div>
-          <div className="">
+          <div className="mt-5">
             <div className=''>{`Total (${per})`}</div>
-            <div className=''></div>
+            <div className=''>{totalPrice}</div>
           </div>
         </div>
       </div>
