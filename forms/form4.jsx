@@ -3,7 +3,7 @@ import { MyContext } from '../state managemant/MyContex'
 import { v4 as uuid } from "uuid"
 function Form4() {
 
-  const { selectedPlan, periodicy, totalPrice,  handleBack, per, selectedService, handleNext, period, selectedPrice} = useContext(MyContext)
+  const { selectedPlan, mon, periodicy, totalPrice,  handleBack, per, selectedService, handleNext, period, selectedPrice} = useContext(MyContext)
 
 
 
@@ -30,9 +30,9 @@ function Form4() {
               </div>
             )
           })}</div>
-          <div className="mt-5">
+          <div className="mt-5 flex justify-between">
             <div className=''>{`Total (${per})`}</div>
-            <div className=''>{totalPrice}</div>
+            <div className=''><span>{`$`}</span>{totalPrice}<span>{`/${mon}`}</span></div>
           </div>
         </div>
       </div>

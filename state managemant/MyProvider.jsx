@@ -17,7 +17,7 @@ function MyProvider({children}) {
     const [advancePrice, setAdvancePrice] = useState('$12/mo');
     const [proPrice, setProPrice] = useState('$15/mo');
     const [selectedPlan, setSelectedPlan] = useState('');
-    const [selectedPrice, setSelectedPrice] = useState('');
+    const [selectedPrice, setSelectedPrice] = useState("");
     
     const [servicePrice1, setServicePrice1] = useState("+$1/mo")
     const [servicePrice2, setServicePrice2] = useState("+$2/mo")
@@ -25,8 +25,8 @@ function MyProvider({children}) {
     
     const [selectedService, setSelectedService] = useState( [] )
     const [totalPrice, setTotalPrice] = useState()
-    
-    
+    const [clean, setClean] = useState()
+    const [mon, setMon] = useState("mon")
     const uniqueId = uuid();
     let hasError = false;
     
@@ -37,16 +37,8 @@ function MyProvider({children}) {
         }
     }
     
-    const calculateTotals = () =>{
-        let PlanPrice = selectedPrice.replace("$","").replace("mo", "").replace("/", "")
-       console.log(PlanPrice);
-    }
+
     
-    useEffect(() =>{
-
-        calculateTotals();
-    }, [selectedPrice])
-
     
     const handleCheckBox = (event) => {
         const { value, checked } = event.target;
@@ -59,26 +51,33 @@ function MyProvider({children}) {
     
     
     const calculateTotal = () => {
-        let planPrice = selectedPrice.replace(/[^\d.-]/g, '');
+        setClean(parseFloat(selectedPrice.replace(/[^\d.-]/g, '')));
         let servicesPrice = selectedService.reduce((total, service) => {
           const numericPrice = parseFloat(service.price.replace(/[^\d.-]/g, ''));
           return total + numericPrice;
-        }, 0);
+        }, clean);
     
-        let totalPrice = planPrice + servicesPrice;
-        setTotalPrice(totalPrice);
+        
+        setTotalPrice(servicesPrice);
     };
     
 
     useEffect(() => {
+
         calculateTotal();
     }, [selectedPrice, selectedService]);
 
     useEffect(() => {
         setTotalPrice(0);
+        
 
         calculateTotal();
+    },[periodicy])
+    
+    useEffect(() => {
+        setSelectedService([]);
 
+        calculateTotal();
     },[periodicy])
 
     
@@ -135,6 +134,7 @@ function MyProvider({children}) {
             setServicePrice3("+$20/yr")
             setPeriod("yearly")
             setPer("per year")
+            setMon("yr")
         }
         else{
             setArcadePrice("$9/mo")
@@ -145,6 +145,7 @@ function MyProvider({children}) {
             setServicePrice3("+$2/mo")
             setPeriod("monthly")
             setPer("per month")
+            setMon("yr")
         }
     }
 
@@ -198,8 +199,13 @@ function MyProvider({children}) {
             handlePhoneError("")
 
         }
+        if(selectedService.length == 0){
+            hasError = true;
+        }
+
         return hasError;
     }
+
 
 
 
@@ -238,6 +244,7 @@ function MyProvider({children}) {
         uniqueId,
         per,
         totalPrice,
+        mon,
     }
 
   return (

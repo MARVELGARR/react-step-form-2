@@ -3,7 +3,7 @@ import { MyContext } from '../state managemant/MyContex'
 
 function Form3() {
 
-  const { handleBack, periodicy, totalPrice, selectedService, checked1, checked2, checked3, checked, servicePrice1, servicePrice2, servicePrice3, handleNext, handleCheckBox} =  useContext(MyContext)
+  const { handleBack, final, periodicy, totalPrice, selectedService, checked1, checked2, checked3, checked, servicePrice1, servicePrice2, servicePrice3, handleNext, handleCheckBox} =  useContext(MyContext)
 
 
   return (
@@ -39,7 +39,6 @@ function Form3() {
             <div className="text-cyan-900 text-sm font-semibold">{servicePrice3}</div>
           </fieldset>
         </div>
-        <div>{totalPrice}</div>
       </div>
       <div className="w-full flex justify-between mt-5">
         <button onClick={handleBack} type="button" className="text-cyan-800 bg-white w-fit px-2 py-1 rounded-md text-xl"> Go Back </button>
