@@ -3,7 +3,7 @@ import { MyContext } from './MyContex'
 import { v4 as uuid } from 'uuid'; 
 
 function MyProvider({children}) {
-    const [next, setNext] = useState(0)
+    const [next, setNext] = useState(2)
     const [name, setName] =  useState("");
     const [email, setEmail] =  useState("");
     const [phone, setPhone] =  useState("");
@@ -27,8 +27,12 @@ function MyProvider({children}) {
     const [totalPrice, setTotalPrice] = useState()
     const [clean, setClean] = useState()
     const [mon, setMon] = useState("mon")
+    
+
+
     const uniqueId = uuid();
     let hasError = false;
+    
     
     const handleNext = () =>{
         const hasError = validate();
@@ -47,6 +51,7 @@ function MyProvider({children}) {
         setSelectedService(updatedServices);
         periodicy ? checked : !checked;
 
+
     };
     
     
@@ -56,10 +61,15 @@ function MyProvider({children}) {
           const numericPrice = parseFloat(service.price.replace(/[^\d.-]/g, ''));
           return total + numericPrice;
         }, clean);
-    
+        
+
         
         setTotalPrice(servicesPrice);
     };
+
+    const onClick = (index) => {
+        setColo(...col, index)
+    }
     
 
     useEffect(() => {
@@ -145,7 +155,7 @@ function MyProvider({children}) {
             setServicePrice3("+$2/mo")
             setPeriod("monthly")
             setPer("per month")
-            setMon("yr")
+            setMon("mo")
         }
     }
 
@@ -199,14 +209,35 @@ function MyProvider({children}) {
             handlePhoneError("")
 
         }
-        if(selectedService.length == 0){
-            hasError = true;
+        if(next === 2){
+            if( selectedService.length === 0){
+
+                hasError = true;
+            }
+            else{
+                hasError = false;
+            }
+
+        }
+        if(next === 1){
+            if( selectedPlan.length === 0){
+                hasError = true;
+            }
+            else{
+                hasError = false;
+            }
         }
 
         return hasError;
     }
 
+    const handleChange =() =>{
+        setNext(1);
+    }
 
+    const handleSubmit =() =>{
+        setNext((prev)=>prev + 1)
+    }
 
 
 
@@ -245,6 +276,9 @@ function MyProvider({children}) {
         per,
         totalPrice,
         mon,
+        handleSubmit,
+        handleChange,
+        onClick,
     }
 
   return (

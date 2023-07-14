@@ -6,15 +6,15 @@ function Form2() {
   
 
   return (
-    <div className=" px-7 py-7 pb-16 flex flex-col">
+    <div className=" md:px-10 px-7 py-7 pb-16 flex flex-col">
       <div className="">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold text-cyan-800">Select Your plan</h1>
-          <p className=" text-xl text-gray-500 pb-4">You have the option of monthly or yearly billing.</p>
+          <h1 className=" md:text-2xl text-3xl font-bold text-cyan-800">Select Your plan</h1>
+          <p className=" md:text-base text-xl text-gray-500 pb-4">You have the option of monthly or yearly billing.</p>
         </div>
       </div>
-      <div className="flex flex-col gap-3">
-        <fieldset className={` ${ selectedPlan == "arcade" ? " border-cyan-950" : ""} flex relative border-2 rounded-lg p-3 gap-5 items-center`}>
+      <div className="flex md:justify-between md:flex-row flex-col gap-3">
+        <fieldset className={` md:w-36 md:flex-col ${ selectedPlan == "arcade" ? " border-cyan-950" : ""} flex relative border-2 rounded-lg p-3 gap-5 items-center`}>
           <img className="" src="/images/icon-arcade.svg"/>
           <input onClick={()=>handleSelectRadio("arcade", arcadePrice)} className='absolute opacity-0 left-0 right-0 cursor-pointer top-0 bottom-0' type='radio' name='radio' value='Arcade'/>
           <div className="">
@@ -23,7 +23,7 @@ function Form2() {
             <div className="">{ periodicy ? "2 months free" : ""}</div>
           </div>
         </fieldset>
-        <fieldset className={` ${ selectedPlan == "advance" ? " border-cyan-950" : "" } flex relative border-2 gap-5 p-3 rounded-lg items-center`}>
+        <fieldset className={`md:w-36 md:w-21 md:flex-col ${ selectedPlan == "advance" ? " border-cyan-950" : "" } flex relative border-2 gap-5 p-3 rounded-lg items-center`}>
           <img className="" src="/images/icon-advanced.svg"/>
           <input onClick={()=>handleSelectRadio("advance", advancePrice)} className='absolute opacity-0 left-0 right-0 top-0 cursor-pointer bottom-0' type='radio' name='radio' value='Advance'/>
           <div className="">
@@ -32,7 +32,7 @@ function Form2() {
             <div className="">{ periodicy ? "2 months free" : ""}</div>
           </div>
         </fieldset>
-        <fieldset className={` ${ selectedPlan == "pro" ? " border-cyan-950" : "" } flex relative border-2 gap-5 p-3 rounded-lg items-center`}>
+        <fieldset className={`md:w-36 md:flex-col ${ selectedPlan == "pro" ? " border-cyan-950" : "" } flex relative border-2 gap-5 p-3 rounded-lg items-center`}>
           <img className="" src="/images/icon-pro.svg"/>
           <input onClick={()=>handleSelectRadio("pro", proPrice)} className="absolute opacity-0 left-0 right-0 top-0 cursor-pointer bottom-0 " type='radio' name='radio' value='Pro'/>
           <div className="">
@@ -52,7 +52,7 @@ function Form2() {
         </div>
         <div className="text-lg">yearly</div>
       </div>
-      <div className="w-full flex justify-between mt-5">
+      <div className="w-full md:-mb-12 flex justify-between mt-5">
         <button onClick={handleBack} type="button" className="text-cyan-800 bg-white w-fit px-2 py-1 rounded-md text-xl"> Go Back </button>
         <button onClick={handleNext} type="button" className="bg-cyan-800 text-white w-fit px-2 py-1 rounded-md "> Next Step </button>
       </div>
