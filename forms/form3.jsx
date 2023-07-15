@@ -20,7 +20,7 @@ function Form3() {
           <p className=" md:text-base text-xl text-gray-500 pb-4">Add-ons helps enhance your gaming experience</p>
         </div>
         <div className=" flex flex-col gap-4">
-          <fieldset className={` border-blue-800" : ""} md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
+          <fieldset className={` ${selectedService.some((service)=> service.item ==="online service") ? " border-cyan-800" : "" } border-blue-800" : ""} md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
             <input checked={selectedService.some((service)=> service.item ==="online service")} value={`online service, ${servicePrice1}`} onChange={handleCheckBox} type="checkbox" className={`  w-4 h-4`}/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Online service</h3>
@@ -28,7 +28,7 @@ function Form3() {
             </div>
             <div className=" md:absolute md:right-10 text-cyan-900 text-sm font-semibold">{servicePrice1}</div>
           </fieldset>
-          <fieldset className={`  md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
+          <fieldset className={` ${selectedService.some((service)=> service.item ==="Larger storage") ? " border-cyan-800" : "" }  md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
             <input checked={selectedService.some((service)=> service.item ==="Larger storage")} value={`Larger storage, ${servicePrice2}`} onChange={handleCheckBox} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Larger storage</h3>
@@ -36,7 +36,7 @@ function Form3() {
             </div>
             <div className=" md:absolute md:right-10 text-cyan-900 text-sm font-semibold">{servicePrice2}</div>
           </fieldset>
-          <fieldset className={` md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
+          <fieldset className={` ${selectedService.some((service)=> service.item ==="Customizable profile") ? " border-cyan-800" : "" } md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
             <input checked={selectedService.some((service)=> service.item ==="Customizable profile")} value={`Customizable profile, ${servicePrice3}`} onChange={handleCheckBox} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Customizable profile</h3>

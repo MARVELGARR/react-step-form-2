@@ -3,7 +3,7 @@ import { MyContext } from './MyContex'
 import { v4 as uuid } from 'uuid'; 
 
 function MyProvider({children}) {
-    const [next, setNext] = useState(2)
+    const [next, setNext] = useState(0)
     const [name, setName] =  useState("");
     const [email, setEmail] =  useState("");
     const [phone, setPhone] =  useState("");
@@ -275,7 +275,7 @@ function MyProvider({children}) {
         mon,
         handleSubmit,
         handleChange,
-        onlick,
+        border
 
     }
 
