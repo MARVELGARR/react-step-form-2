@@ -4,14 +4,14 @@ import "../src/app.css"
 
 function Form3() {
 
-  const { handleBack, final, periodicy, totalPrice, selectedService, checked1, checked2, checked3, checked, servicePrice1, servicePrice2, onClick, servicePrice3, handleNext, handleCheckBox} =  useContext(MyContext)
+  const { handleBack, onlick, final, periodicy, totalPrice, selectedService, checked1, checked2, checked3, checked, servicePrice1, servicePrice2, onClick, servicePrice3, handleNext, handleCheckBox} =  useContext(MyContext)
   const [col, setColo] = useState([])
 
-  const onclick = (index) =>{
-    setColo([...col,index])
-    console.log(col)
-  }
+  const onclick = (index) => {
+    setColo([...col, index])
+    col.includes(0) ? setColo(col.filter((value)=> value !== 0)) : col.includes(1) ? setColo(col.filter((value)=> value !== 1)) : col.includes(2) ? setColo(col.filter((value)=> value !== 2)) : setColo([...col, index])
 
+  }
   return (
     <div className="px-4 py-7 pb-16 flex flex-col">
       <div className="">
@@ -20,24 +20,24 @@ function Form3() {
           <p className=" md:text-base text-xl text-gray-500 pb-4">Add-ons helps enhance your gaming experience</p>
         </div>
         <div className=" flex flex-col gap-4">
-          <fieldset className={`${ col.includes(0) ? "bg-cyan-900" : ""} ? " border-blue-800" : ""} md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
-            <input checked={selectedService.some((service)=> service.item ==="online service")} value={`online service, ${servicePrice1}`} onClick={()=>onclick(0)} onChange={handleCheckBox} type="checkbox" className={`  w-4 h-4`}/>
+          <fieldset className={` border-blue-800" : ""} md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
+            <input checked={selectedService.some((service)=> service.item ==="online service")} value={`online service, ${servicePrice1}`} onChange={handleCheckBox} type="checkbox" className={`  w-4 h-4`}/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Online service</h3>
               <p className="text-sm text-gray-400">Access to multiplayer games</p>
             </div>
             <div className=" md:absolute md:right-10 text-cyan-900 text-sm font-semibold">{servicePrice1}</div>
           </fieldset>
-          <fieldset className={`md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
-            <input checked={selectedService.some((service)=> service.item ==="Larger storage")} value={`Larger storage, ${servicePrice2}`} onClick={()=>onclick(1)} onChange={handleCheckBox} type="checkbox" className=" w-4 h-4"/>
+          <fieldset className={`  md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
+            <input checked={selectedService.some((service)=> service.item ==="Larger storage")} value={`Larger storage, ${servicePrice2}`} onChange={handleCheckBox} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Larger storage</h3>
               <p className="text-sm text-gray-400">Extra 1TB of cloud save</p>
             </div>
             <div className=" md:absolute md:right-10 text-cyan-900 text-sm font-semibold">{servicePrice2}</div>
           </fieldset>
-          <fieldset className={`md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
-            <input checked={selectedService.some((service)=> service.item ==="Customizable profile")} value={`Customizable profile, ${servicePrice3}`} onClick={()=>onclick(3)}  onChange={handleCheckBox} type="checkbox" className=" w-4 h-4"/>
+          <fieldset className={` md:justify-normal md:gap-8 flex px-2 py-3 border-2 rounded-lg items-center justify-between`}>
+            <input checked={selectedService.some((service)=> service.item ==="Customizable profile")} value={`Customizable profile, ${servicePrice3}`} onChange={handleCheckBox} type="checkbox" className=" w-4 h-4"/>
             <div className="">
               <h3 className=" font-bold text-md text-cyan-900">Customizable profile</h3>
               <p className="text-sm text-gray-400">Custom theme on your profile</p>

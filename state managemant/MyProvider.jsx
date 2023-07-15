@@ -27,7 +27,8 @@ function MyProvider({children}) {
     const [totalPrice, setTotalPrice] = useState()
     const [clean, setClean] = useState()
     const [mon, setMon] = useState("mon")
-    
+   const [border, setBorder] = useState([]) 
+
 
 
     const uniqueId = uuid();
@@ -41,8 +42,6 @@ function MyProvider({children}) {
         }
     }
     
-
-    
     
     const handleCheckBox = (event) => {
         const { value, checked } = event.target;
@@ -50,8 +49,8 @@ function MyProvider({children}) {
         const updatedServices = checked ? [...selectedService, { item, price }] : selectedService.filter((service) => service.item !== item);
         setSelectedService(updatedServices);
         periodicy ? checked : !checked;
-
-
+        const updateBorder = checked ? [...border, item] : border.filter((items)=>items.item !== item)
+        setBorder(updateBorder)
     };
     
     
@@ -67,9 +66,7 @@ function MyProvider({children}) {
         setTotalPrice(servicesPrice);
     };
 
-    const onClick = (index) => {
-        setColo(...col, index)
-    }
+
     
 
     useEffect(() => {
@@ -278,7 +275,8 @@ function MyProvider({children}) {
         mon,
         handleSubmit,
         handleChange,
-        onClick,
+        onlick,
+
     }
 
   return (
