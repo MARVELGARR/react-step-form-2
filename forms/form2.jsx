@@ -16,7 +16,7 @@ function Form2() {
       <div className="flex md:justify-between md:flex-row flex-col gap-3">
         <fieldset className={` md:w-36 md:flex-col ${ selectedPlan == "arcade" ? " border-cyan-950" : ""} flex relative border-2 rounded-lg p-3 gap-5 items-center`}>
           <img className="" src="/images/icon-arcade.svg"/>
-          <input onClick={()=>handleSelectRadio("arcade", arcadePrice)} className='absolute opacity-0 left-0 right-0 cursor-pointer top-0 bottom-0' type='radio' name='radio' value='Arcade'/>
+          <input onClick={()=>handleSelectRadio("arcade", arcadePrice)} className='absolute  opacity-0 left-0 right-0 cursor-pointer top-0 bottom-0' type='radio' name='radio' value='Arcade'/>
           <div className="">
             <strong className='text-cyan-900 bold'>Arcade</strong>
             <div className="">{arcadePrice}</div>
