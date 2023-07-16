@@ -28,20 +28,20 @@ function Form1() {
       </div>
 
       <div className=" flex flex-col gap-3">
-        <fieldset className='flex flex-col'>
+        <fieldset className='flex  flex-col'>
           <label className=" md:text-base text-lg" htmlFor='name'>Name</label>
           <input onChange={collectName} type="text" id='name' placeholder='e.g Stephen King' className=" md:h-11 md:w-11/12 h-8 border pl-2 rounded-lg border-gray-400" />
-          <div className='md:flex md:justify-end md:mr-12 text-red-700'>{nameError}</div>
+          <div className='md:flex md:text-sm md:justify-end md:mr-12 text-red-700'>{nameError}</div>
         </fieldset>
         <fieldset className='flex flex-col'>
           <label className="md:text-base text-lg" htmlFor='email'>Email Address</label>
           <input onChange={collectEmail} type="email" id="email" placeholder='e.g stephenking@gmail.com' className=" md:h-11 md:w-11/12 h-8 border pl-2 rounded-lg border-gray-400" />
-          <div className=' md:flex md:justify-end md:mr-12 text-red-700'>{emailError}</div>
+          <div className=' md:flex md:text-sm md:justify-end md:mr-12 text-red-700'>{emailError}</div>
         </fieldset>
         <fieldset className='flex flex-col'>
           <label className="md:text-base text-lg" htmlFor='number'>Phone Number</label>
           <input onChange={collectPhone} type="number" id="number" placeholder='e.g +123 8152 7958 86' className="  md:h-11 md:w-11/12 h-8 border pl-2 rounded-lg border-gray-400"/>
-          <div className=' md:flex md:justify-end md:mr-12 text-red-700'>{phoneError}</div>
+          <div className=' md:flex md:text-sm md:justify-end md:mr-12 text-red-700'>{phoneError}</div>
         </fieldset>
       </div>
       <button type="button" onClick={handleNext} className="bg-cyan-800 text-white w-fit px-2 py-1 rounded-md absolute bottom-5 md:right-16 right-7"> Next Step </button>

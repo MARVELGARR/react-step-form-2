@@ -12,7 +12,7 @@ function App() {
     <MyProvider>
 
       <div className=" bg-teal-600/30 h-screen md:flex md:justify-center md:items-center">
-        <div className="md:flex md:p-2 md:bg-white md:rounded-xl lg:flex bg-teal-600/30">
+        <div className="md:flex  md:p-5 md:bg-white md:rounded-xl lg:flex bg-teal-600/30">
           <div className="sidebar">
             <SideBar/>
           </div>

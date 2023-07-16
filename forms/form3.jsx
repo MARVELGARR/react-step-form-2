@@ -13,7 +13,7 @@ function Form3() {
 
   }
   return (
-    <div className="px-4 py-7 pb-16 flex flex-col">
+    <div className="px-4 md:py-1 md:pb-10 py-7 pb-16 flex flex-col">
       <div className="">
         <div className="flex flex-col gap-2">
           <h1 className=" md:text-2xl text-3xl font-bold text-cyan-800">Pick add-ons</h1>
