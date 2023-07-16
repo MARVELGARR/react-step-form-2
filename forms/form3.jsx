@@ -1,6 +1,6 @@
 import React, { useContext, useState} from 'react'
 import { MyContext } from '../state managemant/MyContex'
-import "../src/app.css"
+
 
 function Form3() {
 
